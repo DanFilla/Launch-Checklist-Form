@@ -32,7 +32,8 @@ window.addEventListener('load', function() {
       isFromValid(pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
       isInputNumber(fuelLevelInput, cargoMassInput);
 
-      document.getElementById('pilotStatus').innerHTML = 'changing';
+      let pilotInput = document.getElementById('pilotStatus');
+      pilotInput.textContent = 'changing';
       // console.log(document.getElementById('pilotStatus').innerHTML);
 
       // let faultyList = document.querySelectorAll('li')
