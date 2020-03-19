@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
    fetch('https://handlers.education.launchcode.org/static/planets.json').then(function(response) {
       response.json().then(function(json) {
          let index = Math.floor((Math.random()*json.length-1) + 1)
-         console.log(index)
+
          missionTargetDoc.innerHTML = `
             <h2>Mission Destination</h2>
             <ol>
@@ -64,13 +64,17 @@ window.addEventListener('load', function() {
 
       if (fuelLevelInput.value < 10000) {
          let fuelStatus = document.getElementById('fuelStatus');
-         fuelStatus.textContent = 'Fuel level NOT high enough for launch!'
+         fuelStatus.textContent = 'Fuel level not high enough for launch!'
          setFaultyItems();
       }
       if (cargoMassInput.value > 10000) {
          let cargoStatus = document.getElementById('cargoStatus');
          cargoStatus.textContent = 'Cargo mass to high for launch!'
          setFaultyItems();
+      }
+      if (fuelLevelInput.value > 10000 && cargoMassInput.value < 10000) {
+         launchStatus.textContent = 'Shuttle is ready for launch.'
+         launchStatus.style.color = 'green'
       }
    })
 })
