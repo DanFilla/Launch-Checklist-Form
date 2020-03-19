@@ -29,6 +29,7 @@ window.addEventListener('load', function() {
       const cargoMassInput = document.querySelector('input[name=cargoMass]');
       const pilotDoc = document.getElementById('pilotStatus');
       const copilotDoc = document.getElementById('copilotStatus');
+      const launchStatusDoc = document.getElementById('launchStatus');
 
       function isFromValid() {
          for (index of arguments) {
@@ -51,12 +52,11 @@ window.addEventListener('load', function() {
       }
 
       function setFaultyItems() {
-         let launchStatus = document.getElementById('launchStatus')
          document.getElementById('faultyItems').style.visibility = 'visible';
          pilotDoc.textContent = `${pilotNameInput.value} ready!`;
          copilotDoc.textContent = `${copilotNameInput.value} ready!`
-         launchStatus.textContent = 'Shuttle not ready for launch'
-         launchStatus.style.color = 'red'
+         launchStatusDoc.textContent = 'Shuttle not ready for launch'
+         launchStatusDoc.style.color = 'red'
       }
 
       isFromValid(pilotNameInput, copilotNameInput, fuelLevelInput, cargoMassInput);
@@ -73,8 +73,11 @@ window.addEventListener('load', function() {
          setFaultyItems();
       }
       if (fuelLevelInput.value > 10000 && cargoMassInput.value < 10000) {
-         launchStatus.textContent = 'Shuttle is ready for launch.'
-         launchStatus.style.color = 'green'
+         document.getElementById('faultyItems').style.visibility = 'visible';
+         pilotDoc.textContent = `${pilotNameInput.value} ready!`;
+         copilotDoc.textContent = `${copilotNameInput.value} ready!`
+         launchStatusDoc.textContent = 'Shuttle is ready for launch.'
+         launchStatusDoc.style.color = 'green'
       }
    })
 })
